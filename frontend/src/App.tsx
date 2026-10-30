@@ -31,6 +31,13 @@ import { AiCommandCenterPage } from './pages/AiCommandCenterPage';
 import { MultiAgentIntelligencePage } from './pages/MultiAgentIntelligencePage';
 import { AcademicDigitalTwinPage } from './pages/AcademicDigitalTwinPage';
 import { PredictiveAiPage } from './pages/PredictiveAiPage';
+import { WorkflowBuilderPage } from './pages/WorkflowBuilderPage';
+import { AcademicIdentityGraphPage } from './pages/AcademicIdentityGraphPage';
+import { PolicySimulatorPage } from './pages/PolicySimulatorPage';
+import { DocumentIntelligencePage } from './pages/DocumentIntelligencePage';
+import { RegulatoryCasesPage } from './pages/RegulatoryCasesPage';
+import { OperationsCenterPage } from './pages/OperationsCenterPage';
+import { EmployerVerificationPage } from './pages/EmployerVerificationPage';
 
 export const App: React.FC = () => {
   const { role } = useAuth();
@@ -56,6 +63,20 @@ export const App: React.FC = () => {
         return <AcademicDigitalTwinPage onNavigate={setCurrentPage} />;
       case 'predictive-ai':
         return <PredictiveAiPage onNavigate={setCurrentPage} />;
+      case 'workflow-builder':
+        return <WorkflowBuilderPage onNavigate={setCurrentPage} />;
+      case 'identity-graph':
+        return <AcademicIdentityGraphPage onNavigate={setCurrentPage} />;
+      case 'policy-simulator':
+        return <PolicySimulatorPage onNavigate={setCurrentPage} />;
+      case 'document-intelligence':
+        return <DocumentIntelligencePage onNavigate={setCurrentPage} />;
+      case 'regulatory-cases':
+        return <RegulatoryCasesPage onNavigate={setCurrentPage} />;
+      case 'operations-center':
+        return <OperationsCenterPage onNavigate={setCurrentPage} />;
+      case 'employer-portal':
+        return <EmployerVerificationPage onNavigate={setCurrentPage} />;
       case 'regulation-bureau':
         return <RegulationDashboard onNavigate={setCurrentPage} />;
       case 'institution-dashboard':

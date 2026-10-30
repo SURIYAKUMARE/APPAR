@@ -13,7 +13,9 @@ import {
   Layers,
   ArrowRight,
   Sparkles,
-  Check
+  Check,
+  Share2,
+  Filter
 } from 'lucide-react';
 
 interface AgentData {
@@ -23,6 +25,7 @@ interface AgentData {
   role_description: string;
   status: string;
   confidence_score: number;
+  collaborates_with?: string[];
   current_task: string;
   metrics: Record<string, any>;
   pending_actions: Array<{
@@ -44,7 +47,7 @@ export const MultiAgentIntelligencePage: React.FC<MultiAgentIntelligencePageProp
   const [loading, setLoading] = useState(true);
   const [scanningAgent, setScanningAgent] = useState<string | null>(null);
   const [actionSuccessMsg, setActionSuccessMsg] = useState<string | null>(null);
-  const [selectedAgent, setSelectedAgent] = useState<AgentData | null>(null);
+  const [categoryFilter, setCategoryFilter] = useState<string>('ALL');
 
   const fetchAgents = async () => {
     try {
@@ -55,9 +58,6 @@ export const MultiAgentIntelligencePage: React.FC<MultiAgentIntelligencePageProp
       if (res.ok) {
         const data = await res.json();
         setAgents(data);
-        if (!selectedAgent && data.length > 0) {
-          setSelectedAgent(data[0]);
-        }
       }
     } catch (err) {
       console.error('Failed to load agents', err);
@@ -106,6 +106,13 @@ export const MultiAgentIntelligencePage: React.FC<MultiAgentIntelligencePageProp
     }
   };
 
+  const categories = ['ALL', 'Digital Identity', 'Checksum & Cryptography', 'Fraud & Collision Radar', 'Regulatory Oversight', 'Forecasting & ML', 'OCR & Ingestion', 'Zero-Trust & Telemetry'];
+
+  const filteredAgents = agents.filter((a) => {
+    if (categoryFilter === 'ALL') return true;
+    return a.category.toLowerCase().includes(categoryFilter.toLowerCase());
+  });
+
   return (
     <div className="space-y-6">
       {/* Page Header */}
@@ -113,28 +120,28 @@ export const MultiAgentIntelligencePage: React.FC<MultiAgentIntelligencePageProp
         <div>
           <div className="flex items-center gap-2 mb-1.5">
             <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-violet-500/20 text-violet-300 border border-violet-500/40 tracking-wider">
-              MULTI-AGENT INTELLIGENCE MESH
+              MULTI-AGENT INTELLIGENCE MESH 2.0
             </span>
             <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
-              10/10 SYNCHRONIZED
+              15/15 SPECIALIZED AGENTS ONLINE
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
-            COORDINATED AI AGENT ECOSYSTEM
+            AUTONOMOUS AGENT ECOSYSTEM
             <Cpu className="w-7 h-7 text-violet-400" />
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mt-1">
-            Ten autonomous micro-agents continuously auditing identity integrity, checksums, duplicate admissions, intake caps, and cybersecurity zero-trust telemetry.
+            Fifteen coordinated AI micro-agents continuously monitoring identity integrity, OCR document extraction, cross-state duplicate collisions, intake caps, and zero-trust cybersecurity telemetry.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           <button
-            onClick={() => onNavigate('ai-command-center')}
+            onClick={() => onNavigate('workflow-builder')}
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-bold transition-all shadow-[0_0_15px_rgba(0,242,254,0.2)]"
           >
             <Sparkles className="w-4 h-4 text-cyan-400" />
-            AI COMMAND OS
+            WORKFLOW BUILDER
           </button>
           <button
             onClick={fetchAgents}
@@ -157,42 +164,63 @@ export const MultiAgentIntelligencePage: React.FC<MultiAgentIntelligencePageProp
         </div>
       )}
 
-      {/* Multi-Agent Sequential Pipeline Visualizer */}
-      <div className="rounded-2xl bg-slate-900/80 border border-cyan-500/20 p-5">
-        <h3 className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-          <Layers className="w-4 h-4" />
-          AUTONOMOUS VERIFICATION PIPELINE FLOW
-        </h3>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+      {/* Visual Multi-Agent Collaboration Topology Graph */}
+      <div className="rounded-2xl bg-slate-900/90 border border-cyan-500/30 p-5 space-y-4 shadow-[0_0_20px_rgba(0,242,254,0.08)]">
+        <div className="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+          <h3 className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2">
+            <Share2 className="w-4 h-4" />
+            NEURAL AGENT COLLABORATION TOPOLOGY (INTER-AGENT DATA CHANNELS)
+          </h3>
+          <span className="text-[10px] font-mono text-emerald-400 animate-pulse">
+            LIVE PROTOCOL: TLS_RPC_V2
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2.5">
           {[
-            { step: '01', name: 'Identity Intel', desc: 'ABC & DigiLocker Link' },
-            { step: '02', name: 'APAAR Checksum', desc: 'Verhoeff Algorithm' },
-            { step: '03', name: 'Duplicate Radar', desc: 'Cross-State Collision' },
-            { step: '04', name: 'Compliance Gate', desc: 'Sanctioned Intake Cap' },
-            { step: '05', name: 'Regulatory Dossier', desc: 'APH Audit Record' },
-          ].map((pipe, idx) => (
-            <div
-              key={idx}
-              className="relative p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-center"
-            >
-              <span className="text-[10px] font-mono font-bold text-violet-400 block mb-0.5">
-                STAGE {pipe.step}
-              </span>
-              <div className="text-xs font-bold text-white mb-0.5">{pipe.name}</div>
-              <div className="text-[10px] text-slate-400">{pipe.desc}</div>
-              {idx < 4 && (
-                <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-cyan-400">
-                  <ChevronRight className="w-4 h-4" />
-                </div>
-              )}
+            { from: 'Identity Intel', to: 'APAAR Checksum', channel: 'Luhn/Verhoeff Stream' },
+            { from: 'APAAR Checksum', to: 'Duplicate Radar', channel: 'HMAC Collision Scan' },
+            { from: 'Duplicate Radar', to: 'Admission Compliance', channel: 'Cross-College Flags' },
+            { from: 'Admission Compliance', to: 'Regulatory Inquiry', channel: 'Over-Intake Breaches' },
+            { from: 'Document OCR', to: 'Data Quality', channel: 'Fuzzy Soundex Sync' },
+            { from: 'Predictive ML', to: 'Policy Simulator', channel: '2026-2030 Projections' },
+            { from: 'Cybersecurity SOC', to: 'Privacy Monitoring', channel: 'Zero-Trust Telemetry' },
+            { from: 'Offline Sync', to: 'Vector Consensus', channel: 'IndexedDB Reconciler' },
+            { from: 'Credential Vault', to: 'External Verifier', channel: 'Dynamic QR Proofs' },
+            { from: 'Benchmarking Agent', to: 'Report Generator', channel: 'APH Scorecard Briefs' },
+          ].map((link, idx) => (
+            <div key={idx} className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800/80 font-mono text-[11px] space-y-1">
+              <div className="flex items-center justify-between text-cyan-300 font-bold">
+                <span className="truncate">{link.from}</span>
+                <ChevronRight className="w-3 h-3 text-cyan-400 shrink-0" />
+                <span className="truncate">{link.to}</span>
+              </div>
+              <div className="text-[9px] text-slate-500 truncate">{link.channel}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* 10 Agents Grid */}
+      {/* Category Filter Pills */}
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setCategoryFilter(cat)}
+            className={`px-3 py-1.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all border ${
+              categoryFilter === cat
+                ? 'bg-cyan-500 text-slate-950 font-bold border-cyan-400 shadow-[0_0_12px_rgba(0,242,254,0.4)]'
+                : 'bg-slate-900/80 text-slate-400 hover:text-white border-slate-800'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* 15 Agents Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {agents.map((agent) => {
+        {filteredAgents.map((agent) => {
           const isScanning = scanningAgent === agent.agent_id;
           const hasPending = agent.pending_actions && agent.pending_actions.length > 0;
 
@@ -205,7 +233,6 @@ export const MultiAgentIntelligencePage: React.FC<MultiAgentIntelligencePageProp
                   : 'bg-slate-900/90 border-cyan-500/20 hover:border-cyan-500/50 shadow-[0_0_15px_rgba(0,242,254,0.06)]'
               }`}
             >
-              {/* Agent Card Header */}
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
@@ -227,7 +254,7 @@ export const MultiAgentIntelligencePage: React.FC<MultiAgentIntelligencePageProp
                 {/* Current Active Task readout */}
                 <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 mb-3">
                   <span className="text-[10px] font-mono text-cyan-400 block mb-1">
-                    CURRENT HEURISTIC CYCLE:
+                    HEURISTIC LOOP:
                   </span>
                   <p className="text-xs text-slate-300 font-mono leading-tight">
                     {agent.current_task}
@@ -237,7 +264,7 @@ export const MultiAgentIntelligencePage: React.FC<MultiAgentIntelligencePageProp
                 {/* Key Metrics Chips */}
                 <div className="space-y-1.5 mb-4">
                   <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
-                    Real-time Telemetry:
+                    Telemetry Metrics:
                   </span>
                   <div className="grid grid-cols-2 gap-1.5">
                     {Object.entries(agent.metrics || {}).map(([key, val]) => (

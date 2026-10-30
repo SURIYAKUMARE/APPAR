@@ -211,3 +211,69 @@ class SecurityEvent(Base):
     severity = Column(String(20), default=AnomalySeverity.MEDIUM.value)
     details = Column(Text, nullable=True)
     resolved = Column(Boolean, default=False)
+
+class WorkflowDefinition(Base):
+    __tablename__ = "workflow_definitions"
+
+    id = Column(Integer, primary_key=True, index=True)
+    workflow_code = Column(String(100), unique=True, index=True, nullable=False)
+    title = Column(String(255), nullable=False)
+    description = Column(Text, nullable=True)
+    trigger_event = Column(String(100), default="ON_STUDENT_INGEST")
+    stages_json = Column(Text, nullable=False) # JSON encoded stage definitions
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+class WorkflowExecution(Base):
+    __tablename__ = "workflow_executions"
+
+    id = Column(Integer, primary_key=True, index=True)
+    workflow_code = Column(String(100), ForeignKey("workflow_definitions.workflow_code"), nullable=False)
+    batch_reference = Column(String(100), index=True, nullable=False)
+    current_stage = Column(String(100), default="STAGE_01_INGEST")
+    status = Column(String(50), default="IN_PROGRESS") # "IN_PROGRESS", "AWAITING_APPROVAL", "COMPLETED", "FAILED"
+    sla_minutes = Column(Integer, default=30)
+    history_log_json = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    completed_at = Column(DateTime, nullable=True)
+
+class RegulatoryCase(Base):
+    __tablename__ = "regulatory_cases"
+
+    id = Column(Integer, primary_key=True, index=True)
+    case_number = Column(String(100), unique=True, index=True, nullable=False)
+    institution_id = Column(String(50), ForeignKey("institutions.id"), nullable=False)
+    case_type = Column(String(100), nullable=False) # "EXCESS_INTAKE", "CROSS_COLLEGE_DUPLICATE", "DOCUMENT_FORGERY", "QUOTA_MANIPULATION"
+    title = Column(String(255), nullable=False)
+    severity = Column(String(20), default=AnomalySeverity.HIGH.value)
+    status = Column(String(50), default="OPEN") # "OPEN", "UNDER_INQUIRY", "SHOW_CAUSE_ISSUED", "HEARING_SCHEDULED", "RESOLVED"
+    sla_deadline = Column(DateTime, nullable=True)
+    assigned_officer = Column(String(100), default="Dr. Anil Sahasrabudhe (Regulation Bureau)")
+    ai_summary = Column(Text, nullable=True)
+    evidence_json = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
+
+class DocumentJob(Base):
+    __tablename__ = "document_jobs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    filename = Column(String(255), nullable=False)
+    file_type = Column(String(50), default="PDF")
+    uploaded_by = Column(String(100), default="admissions_officer")
+    status = Column(String(50), default="VERIFIED") # "PROCESSING", "EXTRACTION_COMPLETE", "VERIFIED", "FLAGGED"
+    confidence_score = Column(Float, default=98.6)
+    extracted_fields_json = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+class PolicyScenario(Base):
+    __tablename__ = "policy_scenarios"
+
+    id = Column(Integer, primary_key=True, index=True)
+    scenario_code = Column(String(100), unique=True, index=True, nullable=False)
+    scenario_name = Column(String(255), nullable=False)
+    created_by = Column(String(100), default="AICTE Policy Planning Cell")
+    scenario_params_json = Column(Text, nullable=False)
+    projected_impact_json = Column(Text, nullable=False)
+    risk_analysis_json = Column(Text, nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))

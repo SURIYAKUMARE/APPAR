@@ -38,7 +38,17 @@ INSTITUTIONS_SEED = [
     {"id": "INST-AICTE-107", "aishe": "C-78902", "name": "Uttar Pradesh Technical Excellence Institute", "state": "Uttar Pradesh", "district": "Noida", "intake": 410},
     {"id": "INST-AICTE-108", "aishe": "C-89013", "name": "Gujarat Institute of Industrial Technology", "state": "Gujarat", "district": "Ahmedabad", "intake": 380},
     {"id": "INST-AICTE-109", "aishe": "C-90124", "name": "Punjab Academy of Advanced Polytechnic", "state": "Punjab", "district": "Ludhiana", "intake": 340},
-    {"id": "INST-AICTE-110", "aishe": "C-99235", "name": "Kerala Model Engineering & Innovation Centre", "state": "Kerala", "district": "Kochi", "intake": 370}
+    {"id": "INST-AICTE-110", "aishe": "C-99235", "name": "Kerala Model Engineering & Innovation Centre", "state": "Kerala", "district": "Kochi", "intake": 370},
+    {"id": "INST-AICTE-111", "aishe": "C-10111", "name": "Rajasthan Technical Institute of Technology", "state": "Rajasthan", "district": "Jaipur", "intake": 380},
+    {"id": "INST-AICTE-112", "aishe": "C-11222", "name": "Madhya Pradesh Engineering & Applied Research Center", "state": "Madhya Pradesh", "district": "Bhopal", "intake": 360},
+    {"id": "INST-AICTE-113", "aishe": "C-12333", "name": "Odisha National Institute of Informatics", "state": "Odisha", "district": "Bhubaneswar", "intake": 390},
+    {"id": "INST-AICTE-114", "aishe": "C-13444", "name": "Andhra Pradesh Institute of Science & Cybersecurity", "state": "Andhra Pradesh", "district": "Visakhapatnam", "intake": 400},
+    {"id": "INST-AICTE-115", "aishe": "C-14555", "name": "Bihar State College of Engineering & Research", "state": "Bihar", "district": "Patna", "intake": 350},
+    {"id": "INST-AICTE-116", "aishe": "C-15666", "name": "Assam Polytechnic & Technical Innovation Campus", "state": "Assam", "district": "Guwahati", "intake": 320},
+    {"id": "INST-AICTE-117", "aishe": "C-16777", "name": "Haryana Apex Institute of Autonomous Tech", "state": "Haryana", "district": "Gurugram", "intake": 410},
+    {"id": "INST-AICTE-118", "aishe": "C-17888", "name": "Uttarakhand Institute of Advanced Computing", "state": "Uttarakhand", "district": "Dehradun", "intake": 370},
+    {"id": "INST-AICTE-119", "aishe": "C-18999", "name": "Jharkhand Central College of Engineering", "state": "Jharkhand", "district": "Ranchi", "intake": 340},
+    {"id": "INST-AICTE-120", "aishe": "C-19000", "name": "Himachal Model Himalayan Technical Campus", "state": "Himachal Pradesh", "district": "Shimla", "intake": 310}
 ]
 
 def seed_database(db: Session):
@@ -105,9 +115,9 @@ def seed_database(db: Session):
 
     db.commit()
 
-    # 3. Seed ~1,000 Synthetic Student Records across 10 institutions
+    # 3. Seed ~2,000 Synthetic Student Records across 20 institutions
     # We will distribute ~100 students per institution
-    total_target = 1000
+    total_target = 2000
     student_records = []
     student_counter = 1
 

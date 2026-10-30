@@ -13,9 +13,16 @@ interface CommandPaletteProps {
 
 const COMMAND_ITEMS = [
   { id: 'ai-command-center', category: 'Autonomous AI', label: 'AI Command OS (Voice & Speech Recognition Terminal)', icon: Sparkles },
-  { id: 'multi-agent', category: 'Autonomous AI', label: '10-Agent Intelligence Grid (Continuous Telemetry & Triage)', icon: Cpu },
+  { id: 'multi-agent', category: 'Autonomous AI', label: '15-Agent Intelligence Mesh (Continuous Telemetry & Triage)', icon: Cpu },
+  { id: 'workflow-builder', category: 'Autonomous AI', label: 'Visual Workflow Builder (Autonomous Regulatory Pipelines)', icon: Sparkles },
+  { id: 'identity-graph', category: 'Autonomous AI', label: 'National Academic Identity Graph (Collision & Linkage Map)', icon: Sparkles },
   { id: 'digital-twin', category: 'Simulation', label: 'Academic Digital Twin (What-If Enrolment & Capacity Simulator)', icon: Building2 },
+  { id: 'policy-simulator', category: 'Simulation', label: 'National Policy Simulator (Macro Seat & Budget Sandbox)', icon: TrendingUp },
   { id: 'predictive-ai', category: 'Simulation', label: 'Predictive AI Engine (2026-2030 Admission Trends & Risk Score)', icon: TrendingUp },
+  { id: 'document-intelligence', category: 'Intelligence', label: 'Document OCR Studio (AI Table & Sanction PDF Extraction)', icon: FileCheck2 },
+  { id: 'regulatory-cases', category: 'Governance', label: 'Regulatory Investigation Desk (Forensic Inquiries & Show-Cause)', icon: FileCheck2 },
+  { id: 'operations-center', category: 'DevOps', label: 'Future Operations & DevOps Center (Cluster Health & Heartbeat)', icon: ShieldAlert },
+  { id: 'employer-portal', category: 'Verification', label: 'Employer Credential Verification (Authorized DPDP BGV Portal)', icon: UserCheck },
   { id: 'super-admin', category: 'Portals', label: 'Super Admin HQ (AICTE National Overview)', icon: LayoutDashboard },
   { id: 'regulation-bureau', category: 'Portals', label: 'Regulation Bureau Compliance Desk', icon: FileCheck2 },
   { id: 'institution-dashboard', category: 'Portals', label: 'Institution Portal (DITAR New Delhi)', icon: Building2 },

@@ -1,33 +1,47 @@
-# APAAR ONE X: Futuristic AI-Powered National Academic Intelligence OS
-### AICTE SIH 2026 Problem Statement 26263 | Regulation Bureau | Smart Automation
+# APAAR ONE X 2.0: The Future National Academic Intelligence Operating System
+### Intelligence Beyond Academic Identity • AICTE SIH 2026 Problem Statement 26263 • Smart Automation Theme
 
 ---
 
 ## 1. Executive Summary & Futuristic OS Architecture
 
-**APAAR ONE X** is a next-generation, sovereign, and intelligent academic operating system designed for the **AICTE Regulation Bureau**. It transcends conventional dashboard management by introducing an autonomous multi-agent intelligence mesh, an academic digital twin simulation engine, real-time voice & natural language command terminal, and a holographic 3D national geospatial grid.
+**APAAR ONE X 2.0** is an enterprise-grade, sovereign academic intelligence operating system built for the **AICTE Regulation Bureau**. It transcends conventional dashboard management by introducing an autonomous 15-agent multi-agent mesh, an interactive visual regulatory workflow engine, an academic digital twin simulation engine, a national academic identity graph, a macro policy simulation sandbox, document OCR intelligence, and real-time voice & speech synthesis command controls.
 
 ### Key Problem Challenges Solved:
 1. **Unverified & Fraudulent Student Enrolments**: Validates 12-digit Automated Permanent Academic Account Registry (APAAR) IDs through the Luhn and Verhoeff 10 algorithms combined with an authorized sandbox adapter for the Academic Bank of Credits (ABC) and DigiLocker.
 2. **Cross-Institution Duplicate Admissions**: Employs privacy-preserving salted HMAC-SHA256 indexing to detect concurrent full-time admissions across colleges without revealing private student data across institutional silos.
 3. **Approved Intake & Supernumerary Quota Breaches**: Continuously audits actual regular enrollments against AICTE-approved capacities and enforces strict quotas for Tuition Fee Waiver (TFW 5%), EWS (10%), PMSSS, Defense, and Foreign Nationals (FN).
-4. **Intermittent Connectivity & Remote Institutions**: Engineered as an **Offline-First Progressive Web App (PWA)** utilizing Service Workers and encrypted client-side IndexedDB. Allows institutions to register students offline and seamlessly synchronize with vector conflict resolution upon reconnecting.
-5. **Autonomous Multi-Agent Mesh**: Ten coordinated micro-agents continuously audit identity integrity, checksums, duplicate admissions, intake caps, and cybersecurity zero-trust telemetry.
-6. **Academic Digital Twin & Simulation**: Simulates what-if enrolment scenarios, intake changes, and quota expansions with real-time feedback on faculty-to-student ratios (1:20 norm) and compliance risks.
-7. **Predictive AI Engine**: Machine learning models forecasting branch-wise demand (2026–2030) and quantifying institutional anomaly risk scores with explainable SHAP weights.
+4. **Autonomous Visual Workflow Engine**: Visual stage-based pipeline builder supporting conditional branching, SLA monitoring, and mandatory human-in-the-loop authorization gates before any regulatory directive is executed.
+5. **15-Agent Coordinated Neural Mesh**: Fifteen autonomous micro-agents continuously auditing identity integrity, checksums, OCR extraction, duplicate admissions, intake caps, and cybersecurity zero-trust telemetry.
+6. **National Academic Identity Graph**: Interactive Canvas node-link relationship visualizer connecting institutions, students, departments, and cross-college duplicate collision clusters with privacy-preserving identifiers.
+7. **National Macro Policy Simulator**: Policy planning sandbox modeling seat surges, regional quota shifts, faculty demand gaps (1:20 norm), and state budget grant implications.
+8. **Document Intelligence Studio**: Deep-learning OCR table extractor with layout bounding boxes and confidence score analytics for scanned admission approval sanction letters.
+9. **Regulatory Case Docket**: Full-lifecycle inquiry case management with forensic evidence packaging and AI-generated statutory case summaries.
+10. **Offline-First PWA 2.0**: Progressive Web App with encrypted client IndexedDB, background synchronization, vector conflict resolution, and offline admission tokening.
 
 ---
 
-## 2. Coordinated 10-Agent Autonomous System
+## 2. Coordinated 15-Agent Autonomous Intelligence Mesh
 
-The platform is powered by 10 specialized AI agents:
+The platform is orchestrated by 15 specialized AI micro-agents:
 
 | Agent | Category | Role & Telemetry Function |
 | :--- | :--- | :--- |
 | **1. Identity Intelligence Agent** | Digital Identity | Cross-references APAAR with ABC registry and DigiLocker vault hashes. |
 | **2. APAAR Validation Agent** | Checksum & Cryptography | Applies Luhn mod-10 and Verhoeff algorithm verification to validate format entropy. |
-| **3. Duplicate Detection Agent** | Fraud Detection | Scans across institutions for concurrent dual enrolments in real time. |
+| **3. Duplicate Detection Agent** | Fraud & Collision Radar | Scans across institutions for concurrent dual enrolments in real time. |
 | **4. Admission Compliance Agent** | Regulatory Oversight | Enforces sanctioned intake caps and the 15% statutory supernumerary ceiling. |
+| **5. Predictive Analytics Agent** | Forecasting & ML | Projects 5-year enrolment trends and calculates seat vacancy risks. |
+| **6. Document Intelligence Agent** | OCR & Ingestion | Extracts structured tables, roll numbers, and seal stamps from scanned approval PDFs. |
+| **7. Data Quality Agent** | Hygiene & Normalization | Flags fuzzy name mismatches, DOB discrepancies, and transliteration variances. |
+| **8. Cybersecurity SOC Agent** | Zero-Trust Telemetry | Continuously audits session tokens, brute-force anomalies, and audit hash chains. |
+| **9. Offline Sync Agent** | Distributed Consensus | Coordinates IndexedDB edge batches and vector clock conflict resolution. |
+| **10. Regulatory Investigation Agent** | Case Triage & Inquiry | Synthesizes inquiry dossiers, packages forensic evidence, and tracks statutory SLAs. |
+| **11. Report Generation Agent** | Executive Dossiers | Compiles Annual AICTE Approval Process Handbook (APH) compliance scorecards. |
+| **12. Privacy Monitoring Agent** | DPDP Compliance | Monitors student consent lifetimes and enforces strict data minimization. |
+| **13. Institution Benchmarking Agent** | NIRF & Compliance Index | Computes regional capacity fill-rates and faculty ratio compliance indices. |
+| **14. Academic Credential Agent** | Verifiable Credentials | Issues verifiable credentials with cryptographic digital signatures and dynamic QRs. |
+| **15. Policy Simulation Agent** | Macro Policy Sandbox | Models regional quota adjustments, reservation restructuring, and faculty deficits. |
 | **5. Predictive Analytics Agent** | Forecasting & ML | Projects 5-year enrolment trends and calculates seat vacancy risks. |
 | **6. Data Quality Agent** | Normalization | Flags fuzzy name mismatches, DOB discrepancies, and transliteration variances. |
 | **7. Cybersecurity SOC Agent** | Zero-Trust Telemetry | Continuously validates session tokens, brute-force anomalies, and audit hash chains. |

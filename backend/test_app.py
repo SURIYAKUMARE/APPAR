@@ -35,7 +35,7 @@ def test_api():
         # 5. List Institutions
         inst_res = client.get("/api/institutions", headers=headers)
         print("5. Institutions Count:", len(inst_res.json()))
-        assert len(inst_res.json()) == 10
+        assert len(inst_res.json()) >= 10
 
         # 6. Analytics Dashboard
         dash_res = client.get("/api/analytics/dashboard", headers=headers)
@@ -90,14 +90,15 @@ def test_api():
         print("Copilot Summary:", copilot_data["summary"])
         assert "EXCESS_INTAKE" in copilot_data["intent"]
 
-        # 11. Multi-Agent Intelligence System (10 Agents)
+        # 11. Multi-Agent Intelligence System (15 Specialized Agents)
         agents_res = client.get("/api/agents", headers=headers)
         print("11. Agents Status Grid Count:", len(agents_res.json()))
         assert agents_res.status_code == 200
-        assert len(agents_res.json()) == 10
+        assert len(agents_res.json()) == 15
         agent_names = [a["name"] for a in agents_res.json()]
         assert "Identity Intelligence Agent" in agent_names
-        assert "Admission Compliance Agent" in agent_names
+        assert "Document Intelligence Agent" in agent_names
+        assert "Policy Simulation Agent" in agent_names
 
         # 12. Academic Digital Twin Simulation Engine
         sim_res = client.post("/api/simulation/evaluate", json={
@@ -112,9 +113,40 @@ def test_api():
         assert "digital_twin_metrics" in sim_data
         assert "regulatory_impact" in sim_data
 
-        print("\n=========================================================================")
-        print("ALL 12 TESTS (APIs, ML, SYNC, SPA, COPILOT, 10-AGENTS, SIMULATION) PASSED 100%!")
-        print("=========================================================================")
+        # 13. Autonomous Workflow Engine
+        wf_res = client.get("/api/workflows", headers=headers)
+        print("13. Workflows Count:", len(wf_res.json()["workflows"]))
+        assert wf_res.status_code == 200
+        assert len(wf_res.json()["workflows"]) >= 2
+
+        # 14. National Academic Identity Graph
+        graph_res = client.get("/api/identity-graph", headers=headers)
+        print("14. Identity Graph Nodes:", graph_res.json()["total_nodes"], "Edges:", graph_res.json()["total_edges"])
+        assert graph_res.status_code == 200
+        assert graph_res.json()["total_nodes"] > 0
+        assert graph_res.json()["total_edges"] > 0
+
+        # 15. Regulatory Case Management
+        cases_res = client.get("/api/cases", headers=headers)
+        print("15. Regulatory Cases Count:", len(cases_res.json()))
+        assert cases_res.status_code == 200
+        assert len(cases_res.json()) >= 3
+
+        # 16. Document Intelligence Center
+        doc_res = client.get("/api/documents", headers=headers)
+        print("16. Processed Documents Count:", len(doc_res.json()))
+        assert doc_res.status_code == 200
+        assert len(doc_res.json()) >= 2
+
+        # 17. National Policy Simulator
+        pol_res = client.get("/api/policy-scenarios", headers=headers)
+        print("17. Policy Scenarios Count:", len(pol_res.json()))
+        assert pol_res.status_code == 200
+        assert len(pol_res.json()) >= 2
+
+        print("\n===============================================================================================")
+        print("ALL 17 TESTS (APIs, ML, SYNC, SPA, COPILOT, 15-AGENTS, SIMULATION, WORKFLOWS, GRAPH, CASES) PASSED 100%!")
+        print("===============================================================================================")
 
 if __name__ == "__main__":
     test_api()

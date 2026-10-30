@@ -17,7 +17,12 @@ from app.routes import (
     verification_routes,
     analytics_routes,
     audit_routes,
-    agent_routes
+    agent_routes,
+    workflow_routes,
+    case_routes,
+    identity_graph_routes,
+    document_routes,
+    policy_routes
 )
 
 @asynccontextmanager
@@ -65,6 +70,11 @@ app.include_router(analytics_routes.router)
 app.include_router(audit_routes.router)
 app.include_router(agent_routes.router)
 app.include_router(agent_routes.simulation_router)
+app.include_router(workflow_routes.router)
+app.include_router(case_routes.router)
+app.include_router(identity_graph_routes.router)
+app.include_router(document_routes.router)
+app.include_router(policy_routes.router)
 
 @app.get("/api/health", tags=["System Status"])
 def health_check():

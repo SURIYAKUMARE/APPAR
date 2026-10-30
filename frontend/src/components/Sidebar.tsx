@@ -24,7 +24,12 @@ import {
   Sparkles,
   Cpu,
   TrendingUp,
-  Brain
+  Brain,
+  Workflow,
+  Share2,
+  Sliders,
+  FileText,
+  Server
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -58,16 +63,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
         { id: 'super-admin', label: 'Super Admin HQ', icon: LayoutDashboard, roles: ['SUPER_ADMIN'] },
         { id: 'regulation-bureau', label: 'Regulation Bureau', icon: Scale, roles: ['SUPER_ADMIN', 'REGULATION_OFFICER'] },
         { id: 'institution-dashboard', label: 'Institution Portal', icon: Building2, roles: ['SUPER_ADMIN', 'INSTITUTION_ADMIN', 'ADMISSION_OFFICER'] },
-        { id: 'student-dashboard', label: 'Student Digilocker', icon: GraduationCap, roles: ['SUPER_ADMIN', 'STUDENT'] }
+        { id: 'student-dashboard', label: 'Student Digilocker', icon: GraduationCap, roles: ['SUPER_ADMIN', 'STUDENT'] },
+        { id: 'employer-portal', label: 'Employer Verification', icon: UserCheck, roles: ['SUPER_ADMIN', 'EXTERNAL_VERIFIER'], badge: 'BGV' }
       ]
     },
     {
       title: 'AI & Autonomous Intelligence',
       items: [
         { id: 'ai-command-center', label: 'AI Command OS', icon: Sparkles, badge: 'VOICE', badgeColor: 'bg-cyan-500 text-slate-950 font-bold' },
-        { id: 'multi-agent', label: '10-Agent Intelligence Grid', icon: Cpu, badge: 'ACTIVE', badgeColor: 'bg-violet-500 text-white font-bold' },
+        { id: 'multi-agent', label: '15-Agent Intelligence Mesh', icon: Cpu, badge: '15 AGENTS', badgeColor: 'bg-violet-500 text-white font-bold' },
+        { id: 'workflow-builder', label: 'Visual Workflow Builder', icon: Workflow, badge: 'AUTONOMOUS', badgeColor: 'bg-cyan-500 text-slate-950 font-bold' },
+        { id: 'identity-graph', label: 'Academic Identity Graph', icon: Share2, badge: 'GRAPH' },
         { id: 'digital-twin', label: 'Academic Digital Twin', icon: Brain, badge: 'SIMULATOR', badgeColor: 'bg-blue-500 text-white' },
+        { id: 'policy-simulator', label: 'National Policy Sandbox', icon: Sliders, badge: 'MACRO' },
         { id: 'predictive-ai', label: 'Predictive AI Engine', icon: TrendingUp, badge: '2030', badgeColor: 'bg-emerald-500 text-slate-950 font-bold' },
+        { id: 'document-intelligence', label: 'Document OCR Studio', icon: FileText, badge: 'OCR' }
       ]
     },
     {
@@ -84,7 +94,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
       title: 'Governance & Analytics',
       items: [
         { id: 'institution-management', label: 'Institutions Directory', icon: Building2 },
+        { id: 'regulatory-cases', label: 'Regulatory Investigation Desk', icon: Scale, roles: ['SUPER_ADMIN', 'REGULATION_OFFICER'], badge: '3 CASES', badgeColor: 'bg-red-500 text-white' },
         { id: 'analytics-reports', label: 'National Analytics & Reports', icon: BarChart3 },
+        { id: 'operations-center', label: 'Operations & DevOps', icon: Server, roles: ['SUPER_ADMIN', 'AUDITOR'], badge: 'HEALTH' },
         { 
           id: 'offline-center', 
           label: 'Offline Center', 
