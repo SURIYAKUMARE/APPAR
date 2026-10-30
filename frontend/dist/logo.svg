@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0a192f" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <!-- Shield Outline -->
+  <path d="M50 5 L85 20 C85 60 50 90 50 95 C50 90 15 60 15 20 Z" fill="url(#grad1)" stroke="url(#goldGrad)" stroke-width="2.5" />
+  <!-- Inner circular wheel / chakra -->
+  <circle cx="50" cy="45" r="22" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.85" />
+  <circle cx="50" cy="45" r="6" fill="url(#goldGrad)" />
+  <!-- Spokes -->
+  <line x1="50" y1="23" x2="50" y2="67" stroke="#38bdf8" stroke-width="1.5" />
+  <line x1="28" y1="45" x2="72" y2="45" stroke="#38bdf8" stroke-width="1.5" />
+  <line x1="34.4" y1="29.4" x2="65.6" y2="60.6" stroke="#38bdf8" stroke-width="1.2" />
+  <line x1="34.4" y1="60.6" x2="65.6" y2="29.4" stroke="#38bdf8" stroke-width="1.2" />
+  <!-- Digital Nodes & Circuit lines -->
+  <circle cx="50" cy="78" r="3.5" fill="#38bdf8" />
+  <path d="M50 67 L50 78" stroke="#38bdf8" stroke-width="2" stroke-dasharray="2,2" />
+  <circle cx="32" cy="73" r="2.5" fill="#fbbf24" />
+  <line x1="32" y1="73" x2="50" y2="78" stroke="#fbbf24" stroke-width="1.2" />
+  <circle cx="68" cy="73" r="2.5" fill="#fbbf24" />
+  <line x1="68" y1="73" x2="50" y2="78" stroke="#fbbf24" stroke-width="1.2" />
+  <!-- Text Label -->
+  <text x="50" y="90" font-family="sans-serif" font-size="6" font-weight="bold" fill="#f8fafc" text-anchor="middle" letter-spacing="1.5">APAAR ONE</text>
+</svg>

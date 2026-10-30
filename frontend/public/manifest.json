@@ -1,0 +1,16 @@
+{
+  "name": "APAAR ONE National Platform",
+  "short_name": "APAAR ONE",
+  "description": "National APAAR-Based Student Data Management, Verification & Intelligence Platform for AICTE-Approved Institutions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a192f",
+  "theme_color": "#0a192f",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
