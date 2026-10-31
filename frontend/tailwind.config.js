@@ -8,6 +8,21 @@ export default {
   theme: {
     extend: {
       colors: {
+        brand: {
+          navy: '#101B36',       // Primary Deep Navy
+          blue: '#2457E8',       // Secondary Royal Blue
+          cyan: '#16C8D8',       // Accent Cyan
+          bg: '#F7F9FC',         // Background Soft White
+          surface: '#FFFFFF',    // Surface White
+          success: '#16A36A',    // Green
+          warning: '#F5A623',    // Amber
+          danger: '#E34B55',     // Red
+          darkBg: '#0A1124',     // Dark Background
+          darkSurface: '#101B36',// Dark Card Surface
+          darkBorder: '#1E2D52', // Dark Border
+          border: '#E2E8F0',     // Light Border
+          muted: '#64748B',      // Secondary Text
+        },
         gov: {
           dark: '#030712',      // Deep space black
           navy: '#0a1128',      // Cyber navy

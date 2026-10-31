@@ -140,6 +140,7 @@ export interface AuditLog {
   details?: string;
   ip_address: string;
   tamper_hash: string;
+  record_hash?: string;
 }
 
 export interface SecurityEvent {

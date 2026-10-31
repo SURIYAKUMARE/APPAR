@@ -1,16 +1,18 @@
 import React from 'react';
 
 interface QRCodeDisplayProps {
-  value: string;
+  value?: string;
+  data?: string;
   size?: number;
   label?: string;
 }
 
 // Deterministic matrix generator for visual QR mock
-export const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ value, size = 180, label }) => {
+export const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ value, data, size = 180, label }) => {
+  const qrText = value || data || 'APAAR-SAMPLE-QR';
   // Generate pseudo-random matrix derived from hash of the value
   const gridSize = 25;
-  const hash = Array.from(value).reduce((acc, char) => (acc * 31 + char.charCodeAt(0)) % 1000000007, 42);
+  const hash = Array.from(qrText).reduce((acc, char) => (acc * 31 + char.charCodeAt(0)) % 1000000007, 42);
   
   const cells: boolean[][] = [];
   for (let r = 0; r < gridSize; r++) {

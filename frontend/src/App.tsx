@@ -14,6 +14,7 @@ import { SuperAdminDashboard } from './pages/SuperAdminDashboard';
 import { RegulationDashboard } from './pages/RegulationDashboard';
 import { InstitutionDashboard } from './pages/InstitutionDashboard';
 import { StudentDashboard } from './pages/StudentDashboard';
+import { StudentDirectoryPage } from './pages/StudentDirectoryPage';
 import { APAARVerifyPage } from './pages/APAARVerifyPage';
 import { StudentRegistrationPage } from './pages/StudentRegistrationPage';
 import { BulkUploadPage } from './pages/BulkUploadPage';
@@ -85,6 +86,8 @@ export const App: React.FC = () => {
         return <StudentDashboard onNavigate={setCurrentPage} />;
       case 'apaar-verify':
         return <APAARVerifyPage onNavigate={setCurrentPage} />;
+      case 'students-directory':
+        return <StudentDirectoryPage onNavigate={setCurrentPage} />;
       case 'student-registration':
         return <StudentRegistrationPage onNavigate={setCurrentPage} />;
       case 'bulk-upload':
