@@ -24,6 +24,8 @@ const COMMAND_ITEMS = [
   { id: 'operations-center', category: 'DevOps', label: 'Future Operations & DevOps Center (Cluster Health & Heartbeat)', icon: ShieldAlert },
   { id: 'employer-portal', category: 'Verification', label: 'Employer Credential Verification (Authorized DPDP BGV Portal)', icon: UserCheck },
   { id: 'super-admin', category: 'Portals', label: 'Super Admin HQ (AICTE National Overview)', icon: LayoutDashboard },
+  { id: 'gis-map', category: 'Geospatial', label: 'National Real GIS Map (Satellite & OpenStreetMap Live Telemetry)', icon: Building2 },
+  { id: 'students-directory', category: 'Operations', label: 'Student Directory & Record Management (Multi-Facet Filter)', icon: Users },
   { id: 'regulation-bureau', category: 'Portals', label: 'Regulation Bureau Compliance Desk', icon: FileCheck2 },
   { id: 'institution-dashboard', category: 'Portals', label: 'Institution Portal (DITAR New Delhi)', icon: Building2 },
   { id: 'student-dashboard', category: 'Portals', label: 'Student Digital Identity & Consent Desk', icon: Users },

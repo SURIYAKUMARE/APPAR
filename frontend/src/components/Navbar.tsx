@@ -42,6 +42,8 @@ const getBreadcrumb = (page: string): { section: string; title: string } => {
   switch (page) {
     case 'super-admin':
       return { section: 'Executive', title: 'National Overview' };
+    case 'gis-map':
+      return { section: 'Executive', title: 'National Real GIS Map' };
     case 'students-directory':
       return { section: 'Student Management', title: 'All Students Directory' };
     case 'student-registration':

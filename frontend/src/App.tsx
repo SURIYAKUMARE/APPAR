@@ -39,6 +39,7 @@ import { DocumentIntelligencePage } from './pages/DocumentIntelligencePage';
 import { RegulatoryCasesPage } from './pages/RegulatoryCasesPage';
 import { OperationsCenterPage } from './pages/OperationsCenterPage';
 import { EmployerVerificationPage } from './pages/EmployerVerificationPage';
+import { GISMapPage } from './pages/GISMapPage';
 
 export const App: React.FC = () => {
   const { role } = useAuth();
@@ -56,6 +57,8 @@ export const App: React.FC = () => {
         return <ForgotPasswordPage onNavigate={setCurrentPage} />;
       case 'super-admin':
         return <SuperAdminDashboard onNavigate={setCurrentPage} />;
+      case 'gis-map':
+        return <GISMapPage onNavigate={setCurrentPage} />;
       case 'ai-command-center':
         return <AiCommandCenterPage onNavigate={setCurrentPage} />;
       case 'multi-agent':

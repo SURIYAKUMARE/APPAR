@@ -33,6 +33,7 @@ import {
   Sparkles,
   Server,
   Layers,
+  Globe,
   GraduationCap,
   ShieldCheck,
   AlertCircle
@@ -119,8 +120,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
       id: 'overview',
       title: 'Overview',
       icon: LayoutDashboard,
-      defaultPage: 'super-admin',
-      roles: ['SUPER_ADMIN', 'REGULATION_OFFICER', 'STATE_NODAL_OFFICER', 'INSTITUTION_ADMIN', 'ADMISSION_OFFICER', 'STUDENT', 'EXTERNAL_VERIFIER', 'AUDITOR']
+      roles: ['SUPER_ADMIN', 'REGULATION_OFFICER', 'STATE_NODAL_OFFICER', 'INSTITUTION_ADMIN', 'ADMISSION_OFFICER', 'STUDENT', 'EXTERNAL_VERIFIER', 'AUDITOR'],
+      subItems: [
+        { id: 'super-admin', label: 'Executive Dashboard', icon: LayoutDashboard },
+        { id: 'gis-map', label: 'Real GIS Satellite Map', icon: Globe, badge: 'REAL', badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' }
+      ]
     },
     {
       id: 'students',

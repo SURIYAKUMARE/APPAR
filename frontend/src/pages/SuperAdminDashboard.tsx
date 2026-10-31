@@ -3,9 +3,10 @@ import {
   Building2, Users, ShieldCheck, AlertTriangle, CopyX, 
   TrendingUp, Download, Filter, RefreshCw, CheckCircle2, ChevronRight, MapPin,
   Clock, ArrowUpRight, ArrowDownRight, Sparkles, Activity, FileCheck, ExternalLink,
-  ShieldAlert, CheckCircle, Database, Server
+  ShieldAlert, CheckCircle, Database, Server, Globe, Compass
 } from 'lucide-react';
 import { IndiaMapSVG } from '../components/IndiaMapSVG';
+import { RealIndiaGISMap } from '../components/RealIndiaGISMap';
 import { useAuth } from '../context/AuthContext';
 import { 
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, 
@@ -34,6 +35,7 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({ onNavi
   const [loading, setLoading] = useState(true);
   const [selectedState, setSelectedState] = useState('');
   const [selectedCourse, setSelectedCourse] = useState('');
+  const [mapViewMode, setMapViewMode] = useState<'real-gis' | 'schematic'>('real-gis');
 
   const fetchAnalytics = async () => {
     setLoading(true);
@@ -375,33 +377,104 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({ onNavi
 
       </div>
 
-      {/* Geospatial Surveillance & State-Wise Bar Chart */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        
-        {/* National Map SVG (1 col) */}
-        <div className="m3-card p-5 space-y-3">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-sm font-bold text-slate-900 dark:text-white">
-                Geospatial Surveillance
+      {/* Google Stitch Real Geospatial GIS Surveillance Section */}
+      <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white">
+                National Institutional GIS Surveillance
               </h2>
-              <p className="text-xs text-slate-400">Interactive state coverage map</p>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-[#2457E8] dark:bg-blue-950/60 dark:text-cyan-400 border border-blue-200">
+                10 Monitored Hubs
+              </span>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-[#2457E8] dark:bg-blue-950/60 dark:text-cyan-400">
-              India
-            </span>
+            <p className="text-xs text-slate-400">
+              Real GPS Geolocation across technical campuses in India with live intake and APAAR verification telemetry.
+            </p>
           </div>
-          <IndiaMapSVG selectedState={selectedState} onSelectState={setSelectedState} />
+
+          {/* Google Stitch Segmented Mode Pill */}
+          <div className="flex items-center p-1 bg-slate-100 dark:bg-[#101B36] rounded-xl border border-slate-200 dark:border-[#1E2D52] text-xs font-semibold self-start sm:self-auto">
+            <button
+              onClick={() => setMapViewMode('real-gis')}
+              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+                mapViewMode === 'real-gis'
+                  ? 'bg-white dark:bg-[#0A1124] text-[#2457E8] dark:text-[#16C8D8] shadow-xs font-bold'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+              }`}
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>Real GIS / Satellite Map</span>
+            </button>
+            <button
+              onClick={() => setMapViewMode('schematic')}
+              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+                mapViewMode === 'schematic'
+                  ? 'bg-white dark:bg-[#0A1124] text-[#2457E8] dark:text-[#16C8D8] shadow-xs font-bold'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+              }`}
+            >
+              <Compass className="w-3.5 h-3.5" />
+              <span>Schematic Vector</span>
+            </button>
+          </div>
         </div>
 
-        {/* State-Wise Student Distribution Bar Chart (2 cols) */}
-        <div className="lg:col-span-2 m3-card p-5 space-y-4">
+        {/* Real GIS Map or Schematic */}
+        {mapViewMode === 'real-gis' ? (
+          <RealIndiaGISMap 
+            selectedState={selectedState} 
+            onSelectState={setSelectedState} 
+            onSelectInstitution={(instId) => onNavigate('institution-management')}
+          />
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            <div className="m3-card p-5 space-y-3">
+              <IndiaMapSVG selectedState={selectedState} onSelectState={setSelectedState} />
+            </div>
+            <div className="lg:col-span-2 m3-card p-5 space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-sm font-bold text-slate-900 dark:text-white">
+                    State-Wise Technical Enrolments
+                  </h2>
+                  <p className="text-xs text-slate-400">Active student counts across states & UTs</p>
+                </div>
+              </div>
+              <div className="h-64 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={data?.state_distribution || []} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" opacity={0.5} />
+                    <XAxis dataKey="state" angle={-25} textAnchor="end" tick={{ fontSize: 10, fill: '#64748B' }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fontSize: 10, fill: '#64748B' }} axisLine={false} tickLine={false} />
+                    <Tooltip 
+                      contentStyle={{ 
+                        backgroundColor: '#101B36', 
+                        borderColor: '#1E2D52', 
+                        borderRadius: '12px', 
+                        fontSize: '12px',
+                        color: '#fff'
+                      }}
+                    />
+                    <Bar dataKey="students" fill="#2457E8" radius={[6, 6, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* State-Wise Student Distribution Bar Chart (shown when in real-gis mode) */}
+      {mapViewMode === 'real-gis' && (
+        <div className="m3-card p-5 space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-sm font-bold text-slate-900 dark:text-white">
-                State-Wise Technical Enrolments
+                State-Wise Technical Enrolment Density
               </h2>
-              <p className="text-xs text-slate-400">Active student counts across states & UTs</p>
+              <p className="text-xs text-slate-400">Total active regular and supernumerary admissions across states & UTs</p>
             </div>
             <button 
               onClick={() => onNavigate('analytics-reports')}
@@ -432,8 +505,7 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({ onNavi
             </ResponsiveContainer>
           </div>
         </div>
-
-      </div>
+      )}
 
       {/* Tri-Column Executive Section: Activity Feed, Action Items & AI Insights */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
